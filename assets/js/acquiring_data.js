@@ -1,7 +1,7 @@
 /*=====================
-phil@affinio.com
+phil@affin.io
 @phil_renaud
-March 2016
+Feb 2015
 =====================*/
 
 
@@ -18,21 +18,20 @@ All the following commands should be pasted into your Chrome or Firefox console.
 
 
 /*=======================================================
-STEP 1: IMPORT JQUERY AND THE UNDERSCORE.JS LIBRARY
+STEP 1: IMPORT THE UNDERSCORE.JS LIBRARY
 For documentation, see http://underscorejs.org/
 =======================================================*/
 
-// add jquery:
-var script = document.createElement('script');
-script.type = 'text/javascript';
-script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js';
-document.head.appendChild(script);
-
-// add underscore:
 var script = document.createElement('script');
 script.type = 'text/javascript';
 script.src = 'https://api.affin.io/scripts/libs/underscore-min.js';
 document.head.appendChild(script);
+
+
+
+
+
+
 
 /*=======================================================
 STEP 2: DO SOME BASIC PAGE MANIPULATION
@@ -52,23 +51,22 @@ indexKeys = _.map($('.mytable tbody').children('tr').eq(0).children('th'), funct
 
 // Map a row:
 // Discuss: .trim(), .parseFloat(), .replace()
-var vals = [];
-vals = _.map($('.mytable tbody').children('tr').eq(1).children('td'), function(obj,iter){
-  var val = iter == 0 ? $(obj).text().trim() : parseFloat($(obj).text().replace(/\,/g, ''))
-  return val;
+var values = _.map($('.mytable tbody').children('tr').eq(1).children('td'), function(obj,iter){
+  var value = iter == 0 ? $(obj).text().trim() : parseFloat($(obj).text().replace(/\,/g, ''))
+  return value;
 })
 
-// Merge indexes with vals:
-_.object(indexKeys, vals);
+// Merge indexes with values:
+_.object(indexKeys, values);
 
 // Now iterate over the full table!
 // discuss: _.object(), map within a map, local variable scope
 var bigmap = _.map($('.mytable tbody').children('tr:not(:first):not(:last)'), function(obj,iter){
-  var vals = _.map($(obj).children('td'), function(obj2,iter2){
+  var values = _.map($(obj).children('td'), function(obj2,iter2){
     var value = iter2 == 0 ? $(obj2).text().trim() : parseFloat($(obj2).text().replace(/\,/g, ''))
     return value;
   }); //innermap
-  return _.object(indexKeys, vals);
+  return _.object(indexKeys, values);
 }); //outermap
 
 // Brief interlude here to talk about console.table
