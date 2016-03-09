@@ -1,7 +1,7 @@
 /*=====================
-phil@affin.io
+phil@affinio.com
 @phil_renaud
-Feb 2015
+March 2016
 =====================*/
 
 
@@ -30,7 +30,7 @@ var global = [{"id":"Canada","stats":[{"name":"food","value":24219696},{"name":"
 
 // Set ourArray to the data you'd like to use for this experiment, and title your chart to match
 var ourArray = exportsToCanada;
-$('h4.bar-chart-title').text('Exports to Cuba, 2004-2013');
+$('h4.bar-chart-title').text('Exports to Canada, 2004-2013');
 
 
 
@@ -58,13 +58,13 @@ function universalController(){
   console.log('Universal Controller - ready to run your functions!');
 
 ////// STEP 1: Draw a bar for each year of our data.
-   initializeBars(ourArray);
+   // initializeBars(ourArray);
 
 ////// STEP 2: Allow for user interaction with our visualization
-   initializeControls();
+   // initializeControls();
 
 ////// STEP 3: Advanced interaction through a click and hold interface
-  handleTouch();
+    // handleTouch();
 
 }; //universalController
 
@@ -97,15 +97,15 @@ function initializeBars(comparable) {
   }); //each yearTotals
 
 //////// Step 1A: Make the length of each bar relative to its $ spent
-   relativeBarWidths();
+   // relativeBarWidths();
 
 //////// Step 1B: Drop another level of metrics in: a breakdown of the yearly spend
-   createLegend(comparable);
-   applyCategories(comparable);
+   // createLegend(comparable);
+   // applyCategories(comparable);
 
 //////// Step 1C: Make the width of each category proportional to 
-   setCategoryWidths();
-   setCategoryRatios(comparable);
+   // setCategoryWidths();
+   // setCategoryRatios(comparable);
 
 }; //initializeBars
 
