@@ -1,4 +1,7 @@
 /*=====================
+Satish Panigrahi
+Summary: Modifying for class project
+
 phil@affinio.com
 @phil_renaud
 March 2016
@@ -142,7 +145,30 @@ Household Goods, Military, and Miscellaneous.
 Each one corresponds with a common starting number in its End-Use Code.
 =======================================================*/
 
-// Let's index all of our categories:
+var food = _.filter(bigmap, function(obj,iter){
+  return obj['End-Use Code'].indexOf('(0') > -1;
+})
+var industrial = _.filter(bigmap, function(obj,iter){
+  return obj['End-Use Code'].indexOf('(1') > -1;
+})
+var capital_goods = _.filter(bigmap, function(obj,iter){
+  return obj['End-Use Code'].indexOf('(2') > -1;
+})
+var automative = _.filter(bigmap, function(obj,iter){
+  return obj['End-Use Code'].indexOf('(3') > -1;
+})
+var consumer_goods = _.filter(bigmap, function(obj,iter){
+  return obj['End-Use Code'].indexOf('(4') > -1;
+})
+var other_goods = _.filter(bigmap, function(obj,iter){
+  return obj['End-Use Code'].indexOf('(5') > -1;
+})
+
+
+
+
+/*====================
+// Let's index all of our categories: Export: refere to end use SITC Code
 var food = _.filter(bigmap, function(obj,iter){
   return obj['End-Use Code'].indexOf('(0') > -1;
 })
@@ -165,15 +191,16 @@ var misc = _.filter(bigmap, function(obj,iter){
   return obj['End-Use Code'].indexOf('(6') > -1;
 })
 
+=========================*/
+
 // And include them in a large array of objects:
 var hugemap = [
   {"name": "food", "values": food},
-  {"name": "chem", "values": chem},
   {"name": "industrial", "values": industrial},
-  {"name": "transportation", "values": transportation},
-  {"name": "household", "values": household},
-  {"name": "military", "values": military},
-  {"name": "misc", "values": misc}
+  {"name": "capital_goods", "values": capital_goods},
+  {"name": "automative", "values": automative},
+  {"name": "consumer_goods", "values": consumer_goods},
+  {"name": "other_goods", "values": other_goods}
 ]
 
 
@@ -270,8 +297,10 @@ STEP 5: EXPORT THE MASTER MAP IN TEXT FORMAT
 // Okay, back to our big comparable table! Let's say we want to export our data.
 // this will give us the array exploded out into a string; let's copy it (everything but the surrounding quotes) so we can use it in our next excercise.
 JSON.stringify(comparable);
-
+/* Commented by Satish========================
+// Run the js file directly in Chrome console
 var exportsToCanada = [{"id":"Value 2004","stats":[{"name":"food","value":10932929},{"name":"chem","value":47670039},{"name":"industrial","value":53236497},{"name":"transportation","value":50017241},{"name":"household","value":23395551},{"name":"military","value":453961},{"name":"misc","value":4173651}]},{"id":"Value 2005","stats":[{"name":"food","value":12045684},{"name":"chem","value":55398959},{"name":"industrial","value":60654420},{"name":"transportation","value":53606698},{"name":"household","value":25754653},{"name":"military","value":426801},{"name":"misc","value":4011470}]},{"id":"Value 2006","stats":[{"name":"food","value":13597489},{"name":"chem","value":61251666},{"name":"industrial","value":64778364},{"name":"transportation","value":56772879},{"name":"household","value":29330511},{"name":"military","value":408613},{"name":"misc","value":4516491}]},{"id":"Value 2007","stats":[{"name":"food","value":15828932},{"name":"chem","value":66940063},{"name":"industrial","value":66654562},{"name":"transportation","value":60112470},{"name":"household","value":33238849},{"name":"military","value":967493},{"name":"misc","value":5145773}]},{"id":"Value 2008","stats":[{"name":"food","value":18219404},{"name":"chem","value":78250553},{"name":"industrial","value":70007956},{"name":"transportation","value":53305854},{"name":"household","value":35125349},{"name":"military","value":973378},{"name":"misc","value":5267337}]},{"id":"Value 2009","stats":[{"name":"food","value":17824759},{"name":"chem","value":56023688},{"name":"industrial","value":56578386},{"name":"transportation","value":36755371},{"name":"household","value":32537736},{"name":"military","value":577091},{"name":"misc","value":4360923}]},{"id":"Value 2010","stats":[{"name":"food","value":19348514},{"name":"chem","value":71248282},{"name":"industrial","value":67126144},{"name":"transportation","value":49544427},{"name":"household","value":36118327},{"name":"military","value":875765},{"name":"misc","value":4995005}]},{"id":"Value 2011","stats":[{"name":"food","value":21855377},{"name":"chem","value":84782247},{"name":"industrial","value":76557266},{"name":"transportation","value":54471786},{"name":"household","value":37069568},{"name":"military","value":940553},{"name":"misc","value":5614733}]},{"id":"Value 2012","stats":[{"name":"food","value":23311658},{"name":"chem","value":85455718},{"name":"industrial","value":80737858},{"name":"transportation","value":59132702},{"name":"household","value":37528846},{"name":"military","value":536554},{"name":"misc","value":5947207}]},{"id":"Value 2013","stats":[{"name":"food","value":24219696},{"name":"chem","value":91480126},{"name":"industrial","value":79593366},{"name":"transportation","value":60460811},{"name":"household","value":38014667},{"name":"military","value":588784},{"name":"misc","value":7252143}]}];
+==============================================*/
 
 // And now we're off to the races!
 
